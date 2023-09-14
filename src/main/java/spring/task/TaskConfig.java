@@ -1,8 +1,10 @@
-package com.example.demo.task;
+package spring.task;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import spring.task.orm.entity.Task;
+import spring.task.orm.repository.TaskRepository;
 
 import java.time.LocalDateTime;
 import java.time.Month;
