@@ -37,7 +37,7 @@ public class TaskControllerTest {
 
     @BeforeEach
     public void setUp() {
-        task = new Task("Test Task", "This is a test", 1L, LocalDateTime.now(), null, 1L);
+        task = new Task("Test Task", "This is a test", 1L, LocalDateTime.now(), null, null, 1L);
     }
     @Test
     public void testGetTasks() throws Exception {

@@ -25,16 +25,19 @@ public class Task {
     private String taskDesc;
     private LocalDateTime dueTime;
     private LocalDateTime completedTime;
+
+    private String recurrence;
     private Long userId;
 
     public Task() {
     }
-    public Task(String taskName, String taskDesc, Long taskId, LocalDateTime dueTime, LocalDateTime completedTime, Long userId) {
+    public Task(String taskName, String taskDesc, Long taskId, LocalDateTime dueTime, LocalDateTime completedTime, String recurrence, Long userId) {
         this.taskName = taskName;
         this.taskDesc = taskDesc;
         this.taskId = taskId;
         this.dueTime = dueTime;
         this.completedTime = completedTime;
+        this.recurrence = recurrence;
         this.userId = userId;
     }
 
@@ -50,9 +53,10 @@ public class Task {
     public void setCompletedTime(LocalDateTime completedTime) {this.completedTime = completedTime;}
     public Long getUserId() {return userId;}
     public void setUserId(Long userId) {this.userId = userId;}
+    public String getRecurrence() { return recurrence; }
+    public void setRecurrence(String recurrence) { this.recurrence = recurrence; }
 
-    @Override
     public String toString() {
-        return "Task{" + "taskName='" + taskName + '\'' + ", taskDesc='" + taskDesc + '\'' + ", TaskId=" + taskId + ", dueTime=" + dueTime + ", completedTime=" + completedTime + ", userId=" + userId + '}';
+        return "Task{" + "taskName='" + taskName + '\'' + ", taskDesc='" + taskDesc + '\'' + ", TaskId=" + taskId + ", dueTime=" + dueTime + ", completedTime=" + completedTime + ", userId=" + userId + ", recurrence='" + recurrence + '\'' + '}';
     }
 }

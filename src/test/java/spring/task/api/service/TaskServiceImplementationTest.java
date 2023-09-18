@@ -17,20 +17,20 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class TaskServiceTest {
+public class TaskServiceImplementationTest {
 
     @Mock
     private TaskRepository taskRepository;
 
     @InjectMocks
-    private TaskService taskService;
+    private TaskServiceImplementation taskService;  // <-- Change to concrete implementation
 
     private Task task;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        task = new Task("Test Task", "This is a test", 1L, LocalDateTime.now(), null, 1L);
+        task = new Task("Test Task", "This is a test", 1L, LocalDateTime.now(), null, null, 1L);
     }
     @Test
     public void testGetTasks() {
@@ -69,7 +69,7 @@ public class TaskServiceTest {
     @Test
     public void testUpdateTask_Valid() {
         when(taskRepository.findById(task.getTaskId())).thenReturn(Optional.of(task));
-        taskService.updateTask(task.getTaskId(), "New Task", "New Description", LocalDateTime.now(), null);
+        taskService.updateTask(task.getTaskId(), "New Task", "New Description", LocalDateTime.now(), null, null);
         assertEquals("New Task", task.getTaskName());
         assertEquals("New Description", task.getTaskDesc());
     }
@@ -77,15 +77,7 @@ public class TaskServiceTest {
     public void testUpdateTask_NotFound() {
         when(taskRepository.findById(task.getTaskId())).thenReturn(Optional.empty());
         assertThrows(TaskNotFoundException.class, () ->
-                taskService.updateTask(task.getTaskId(), "New Task", "New Description", LocalDateTime.now(), null)
+                taskService.updateTask(task.getTaskId(), "New Task", "New Description", LocalDateTime.now(), null , null)
         );
     }
-
-
-
-
-
-
-
-
 }

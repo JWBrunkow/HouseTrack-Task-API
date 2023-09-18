@@ -12,40 +12,32 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/task")
 public class TaskController {
-
     private final TaskService taskService;
-
     @Autowired
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
-
+    public TaskController(TaskService taskService) {this.taskService = taskService;}
     @GetMapping()
-    public List<Task> getTasks() {
-        return taskService.getTasks();
-    }
-
+    public List<Task> getTasks() {return taskService.getTasks();}
     @GetMapping("/incomplete")
-    public List<Task> getIncompleteTasks() {
-        return taskService.getIncompleteTasks();
-    }
-
+    public List<Task> getIncompleteTasks() {return taskService.getIncompleteTasks();}
+    @GetMapping("/completed")
+    public List<Task> getCompletedTasks() {return taskService.getCompletedTasks();}
+    @GetMapping("/recurring")
+    public List<Task> getCompletedRecurringTasks() {return taskService.getCompletedRecurringTasks();}
     @PostMapping
     public void addTask(@RequestBody Task task) {
         taskService.addNewTask(task);
     }
-
     @DeleteMapping(path = "{taskId}")
     public void deleteTask(@PathVariable("taskId") Long taskId) {
         taskService.deleteTask(taskId);
     }
-
     @PutMapping(path = "{taskId}")
     public void updateTask(@PathVariable("taskId") Long taskId, @RequestBody Task updatedTask) {
         taskService.updateTask(taskId,
                 updatedTask.getTaskName(),
                 updatedTask.getTaskDesc(),
                 (LocalDateTime) updatedTask.getDueTime(),
-                (LocalDateTime) updatedTask.getCompletedTime());
+                (LocalDateTime) updatedTask.getCompletedTime(),
+                updatedTask.getRecurrence());
     }
 }

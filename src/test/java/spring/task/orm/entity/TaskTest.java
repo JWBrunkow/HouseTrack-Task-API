@@ -13,7 +13,7 @@ public class TaskTest {
 
     @BeforeEach
     public void setUp() {
-        task = new Task("Test Task", "Test Description", 1L, LocalDateTime.now(), null, 2L);
+        task = new Task("Test Task", "Test Description", 1L, LocalDateTime.now(), null, null , 2L);
     }
 
     @Test
@@ -63,6 +63,7 @@ public class TaskTest {
                 ", dueTime=" + task.getDueTime() +
                 ", completedTime=" + task.getCompletedTime() +
                 ", userId=2" +
+                ", recurrence='null'" +
                 '}';
         assertEquals(expectedString, task.toString());
     }
