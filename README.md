@@ -53,7 +53,7 @@ PUT requests are made via: <br>
 
 
 ## Known Issues and Future Updates
-* PUT requests interfacing with date and time fields are currently non-functional - to update these fields using PUT causes errors. Time fields to be refactored.
+
 * More granular GET methods to feature in later updates
 * Login component to be added, assigning each user a custom userId which is passed as part of the JSON.
 * Spring Security features to be implemented.
