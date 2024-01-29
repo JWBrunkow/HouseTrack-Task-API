@@ -8,7 +8,7 @@ import spring.task.orm.entity.Task;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping(path = "api/v1/task")
 public class TaskController {
