@@ -21,7 +21,7 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/housetrack-task-api
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/your-application
 
         # Build the Docker image
         docker build . --tag $IMAGE_ID:latest --tag $IMAGE_ID:${{ github.sha }}
@@ -41,7 +41,10 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
         script: |
-          cd /path/to/your/project/on/ec2
           docker pull $IMAGE_ID:latest
+          # Add commands to stop the current container, and start a new one with the updated image
+          # For example, using Docker Compose might look like:
+          cd /path/to/your/project/on/ec2
+          docker-compose pull
           docker-compose down
           docker-compose up -d
